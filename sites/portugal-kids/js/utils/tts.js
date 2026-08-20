@@ -25,11 +25,18 @@ const loadVoices = () => {
 // Load voices initially and whenever they change
 if ('speechSynthesis' in window) {
   loadVoices();
-  window.speechSynthesis.onvoiceschanged = loadVoices;
+  if (typeof window.speechSynthesis.addEventListener === 'function') {
+    window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  } else {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
 }
 
 const speakText = (text, lang = 'en-US') => {
   if ('speechSynthesis' in window) {
+    // Safari on iOS may not expose voices until this function is called from
+    // a user interaction, so refresh the list immediately before speaking.
+    loadVoices();
     window.speechSynthesis.cancel();
     const msg = new SpeechSynthesisUtterance(text);
     msg.lang = lang;

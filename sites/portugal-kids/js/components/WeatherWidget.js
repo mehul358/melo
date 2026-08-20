@@ -5,25 +5,41 @@ const WeatherWidget = ({ city, lat, lon }) => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&current_weather=true&timezone=Europe%2FLisbon`)
-      .then(res => res.json())
+    const controller = new AbortController();
+    const params = new URLSearchParams({
+      latitude: lat,
+      longitude: lon,
+      current: 'temperature_2m,weather_code',
+      daily: 'temperature_2m_max,temperature_2m_min',
+      timezone: 'Europe/Lisbon'
+    });
+
+    fetch(`https://api.open-meteo.com/v1/forecast?${params}`, { signal: controller.signal })
+      .then(res => {
+        if (!res.ok) throw new Error(`Weather request failed (${res.status})`);
+        return res.json();
+      })
       .then(data => {
+        if (!data.current || !data.daily) throw new Error('Weather response was incomplete');
         setWeather({
-          temp: Math.round(data.current_weather.temperature),
+          temp: Math.round(data.current.temperature_2m),
           max: Math.round(data.daily.temperature_2m_max[0]),
           min: Math.round(data.daily.temperature_2m_min[0]),
-          code: data.current_weather.weathercode
+          code: data.current.weather_code
         });
         setLoading(false);
       })
       .catch(err => {
+        if (err.name === 'AbortError') return;
         console.error("Failed to fetch weather", err);
         setLoading(false);
       });
+
+    return () => controller.abort();
   }, [lat, lon]);
 
   if (loading) return React.createElement('div', { className: "text-center font-nunito p-4 text-gray-500 font-bold mb-8" }, "Fetching real weather... 🌤️");
-  if (!weather) return null;
+  if (!weather) return React.createElement('div', { className: "text-center font-nunito p-4 text-gray-500 font-bold mb-8" }, "Weather is taking a break. Please try again later! 🌦️");
 
   let weatherEmoji = "☀️";
   let weatherDesc = "Clear & Sunny";
