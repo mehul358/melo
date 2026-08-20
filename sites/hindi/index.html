@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindi Fun! Sentences</title>
+    <title>Hindi Fun! | Melo</title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="text-gray-800">
 
     <div id="app-container">
         <div id="splash-screen" class="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
             <video id="splash-video" playsinline>
-                <source src="../logo.mp4" type="video/mp4">
+                <source src="images/logo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <button id="play-splash-btn" class="hidden absolute inset-0 flex items-center justify-center">
@@ -97,6 +103,6 @@
     <!-- Reward Animation Container -->
     <div id="reward-animation" class="fixed inset-0 bg-white z-50 hidden items-center justify-center"></div>
 
-    <script src="../js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,22 +1,59 @@
-This is a simple web application for learning Hindi. The application is built with HTML, CSS, and vanilla JavaScript.
+# Melo project instructions
 
-## Project Structure
+## Purpose and structure
 
-- `index.html`: The main entry point of the application.
-- `js/app.js`: Contains the core application logic.
-- `css/style.css`: Contains the custom styles for the application.
-- `components/`: Contains the HTML for the different sections of the application.
-- `content.json`: Contains the data for the lessons and stories.
-- `pack_game.json`: Contains the data for the pack game.
+This repository hosts independent static microsites under the `melo.ink`
+domain. Each directory below `sites/` must work as its own web root:
 
-## Development
+- `sites/home`: launcher at `melo.ink`.
+- `sites/hindi`: Hindi learning games at `hindi.melo.ink`.
+- `sites/lisbon`: family trip planner at `lisbon.melo.ink`.
+- `sites/portugal-kids`: children's Portugal guide at
+  `portugal-kids.melo.ink`.
 
-The application is self-contained and does not require any build tools. Simply open `index.html` in a browser to run the application.
+Do not introduce runtime references between microsite directories. A site owns
+all of its HTML, CSS, JavaScript, data, icons, and media. Put genuinely reusable
+development resources in a separate package only when there is a concrete need.
 
-## TTS (Text-to-Speech)
+## Stack and development
 
-The application uses the Web Speech API for text-to-speech functionality. The voice selection logic is in `js/app.js`. When working with the TTS functionality, be aware of the following:
+The sites use static HTML, CSS, and browser JavaScript. Some libraries are loaded
+from public CDNs. No package installation or compile step is currently required.
 
-- **Voice Loading:** The list of available voices is loaded asynchronously by the browser. The `speechSynthesis.onvoiceschanged` event is used to detect when the voices are available. The `loadVoices` function in `js/app.js` handles this.
-- **Cross-browser Compatibility:** The Web Speech API has varying levels of support across different browsers. The code should be tested on all major browsers, including Chrome, Firefox, Safari, and Edge. Special attention should be paid to mobile browsers, as they may have different behavior.
-- **iOS:** The Web Speech API on iOS has some quirks. For example, `speechSynthesis.getVoices()` may return an empty array until the user interacts with the page. The current implementation attempts to handle this, but it's important to be aware of this when making changes.
+Serve the affected microsite as the web root, for example:
+
+```bash
+python3 -m http.server 8888 --directory sites/hindi
+```
+
+Run `node scripts/validate-sites.mjs` before committing. Do not open the HTML
+files directly because the Hindi app fetches fragments and JSON over HTTP.
+
+## Engineering rules
+
+- Work on a focused branch rather than directly on `main`.
+- Preserve the static-first architecture unless a task explicitly requires a
+  build system or backend.
+- Prefer relative local URLs that remain inside the current microsite.
+- Never commit secrets. Firebase web configuration is a public client
+  identifier; Firestore rules and access design are the security boundary.
+- Keep keyboard access, visible focus, semantic HTML, readable contrast, and
+  useful labels when changing UI.
+- Validate affected external services and check the browser console.
+- Treat the Lisbon app as sensitive family data even though it is currently
+  published; `noindex` is not access control.
+
+## Speech behavior
+
+The Hindi and Portugal-for-Kids sites use the Web Speech API. Voice discovery is
+asynchronous, browser support differs, and Safari/iOS may return no voices until
+after user interaction. Test Chrome, Firefox, Safari, Edge, and mobile behavior
+when changing speech logic.
+
+## Completion criteria
+
+1. Run the repository validator and JavaScript syntax checks.
+2. Serve each affected site over HTTP and exercise its local resources.
+3. Test relevant speech, persistence, Firebase, map, or weather behavior.
+4. Inspect console and network errors at desktop and mobile widths.
+5. Review the final diff and report remaining manual checks.

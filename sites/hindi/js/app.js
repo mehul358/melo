@@ -341,7 +341,7 @@ function populateSidePanel() {
     const panel = document.getElementById('side-panel');
     panel.innerHTML = `
         <div class="p-6">
-            <img src="melo.png" alt="App Logo" class="h-20 w-auto mx-auto mb-4">
+            <img src="images/melo.png" alt="App Logo" class="h-20 w-auto mx-auto mb-4">
             <h2 class="text-2xl font-balsamiq text-center text-primary mb-8">Hindi Fun!</h2>
 
             <div class="space-y-2">
@@ -672,8 +672,20 @@ function loadPackGame() {
     const meloTripImage = document.getElementById('melo-trip-image');
 
     if (meloTripImage) {
-        const theme = levelData.theme.toLowerCase().replace(' ', '-');
-        meloTripImage.src = `melo-${theme}.png`;
+        const themeImages = {
+            'Art Class': 'melo-art.png',
+            Beach: 'melo-beach.png',
+            Bedroom: 'melo-bed.png',
+            'Birthday Party': 'melo-birthday.png',
+            Camping: 'melo-camping.png',
+            Farm: 'melo-farm.png',
+            Kitchen: 'melo-chef.png',
+            Park: 'melo-park.png',
+            School: 'melo-school.png',
+            Supermarket: 'melo-supermarket.png'
+        };
+        const themeImage = themeImages[levelData.theme] || 'melo-trip.png';
+        meloTripImage.src = `images/${themeImage}`;
     }
 
     const correctItems = levelData.commands.map(c => c.item);
@@ -739,7 +751,7 @@ function showRewardAnimation() {
     const rewardContainer = document.getElementById('reward-animation');
     rewardContainer.innerHTML = `
         <div class="text-center">
-            <img src="melo.png" alt="Melo Waving" class="h-64 w-auto mx-auto mb-8">
+            <img src="images/melo.png" alt="Melo Waving" class="h-64 w-auto mx-auto mb-8">
             <h2 class="text-3xl font-balsamiq text-primary">You did it!</h2>
             <p class="text-lg text-gray-600 mt-2">Melo is ready for his trip!</p>
             <button onclick="hideRewardAnimation()" class="mt-8 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-full">Play Again</button>

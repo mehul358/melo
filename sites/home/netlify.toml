@@ -1,0 +1,45 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/hindi/*"
+  to = "https://hindi.melo.ink/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hindi"
+  to = "https://hindi.melo.ink/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lisbon/*"
+  to = "https://lisbon.melo.ink/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lisbon"
+  to = "https://lisbon.melo.ink/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/portugal-kids/*"
+  to = "https://portugal-kids.melo.ink/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/portugal-kids"
+  to = "https://portugal-kids.melo.ink/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
