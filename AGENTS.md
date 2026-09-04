@@ -7,7 +7,6 @@ domain. Each directory below `sites/` must work as its own web root:
 
 - `sites/home`: launcher at `melo.ink`.
 - `sites/hindi`: Hindi learning games at `hindi.melo.ink`.
-- `sites/lisbon`: family trip planner at `lisbon.melo.ink`.
 - `sites/portugal-kids`: children's Portugal guide at
   `portugal-kids.melo.ink`.
 
@@ -35,13 +34,10 @@ files directly because the Hindi app fetches fragments and JSON over HTTP.
 - Preserve the static-first architecture unless a task explicitly requires a
   build system or backend.
 - Prefer relative local URLs that remain inside the current microsite.
-- Never commit secrets. Firebase web configuration is a public client
-  identifier; Firestore rules and access design are the security boundary.
+- Never commit secrets or private family data.
 - Keep keyboard access, visible focus, semantic HTML, readable contrast, and
   useful labels when changing UI.
 - Validate affected external services and check the browser console.
-- Treat the Lisbon app as sensitive family data even though it is currently
-  published; `noindex` is not access control.
 
 ## Speech behavior
 

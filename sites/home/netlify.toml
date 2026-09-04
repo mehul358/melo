@@ -14,18 +14,6 @@
   force = true
 
 [[redirects]]
-  from = "/lisbon/*"
-  to = "https://lisbon.melo.ink/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/lisbon"
-  to = "https://lisbon.melo.ink/"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/portugal-kids/*"
   to = "https://portugal-kids.melo.ink/:splat"
   status = 301

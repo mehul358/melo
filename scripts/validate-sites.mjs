@@ -3,7 +3,7 @@ import { dirname, extname, join, normalize, relative, resolve } from "node:path"
 
 const repoRoot = resolve(import.meta.dirname, "..");
 const sitesRoot = join(repoRoot, "sites");
-const siteNames = ["home", "hindi", "lisbon", "portugal-kids"];
+const siteNames = ["home", "hindi", "portugal-kids"];
 const textExtensions = new Set([".html", ".js", ".css"]);
 const errors = [];
 

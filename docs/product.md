@@ -3,8 +3,7 @@
 ## Audience
 
 The site is a personal family hub. Its current experiences are designed primarily
-for children learning Hindi and for family members planning or learning about a
-Portugal trip.
+for children learning Hindi and learning about Portugal.
 
 ## Product principles
 
@@ -21,11 +20,6 @@ Portugal trip.
 
 Interactive lessons, stories, quizzes, packing and observation games, and Hindi/
 English speech playback. Progress is local to the browser.
-
-### Lisbon
-
-A family itinerary and planning surface with a map, trip-specific shared state,
-and a local fallback.
 
 ### Portugal for kids
 

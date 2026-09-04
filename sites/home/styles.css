@@ -169,7 +169,7 @@ h1 {
 
 .site-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -207,7 +207,6 @@ h1 {
 }
 
 .hindi .card-icon { color: #9b3f00; background: #ffddb4; }
-.lisbon .card-icon { color: #08776e; background: #bff4e7; }
 .portugal .card-icon { color: #6530aa; background: #e7d8ff; }
 
 .card-copy {
