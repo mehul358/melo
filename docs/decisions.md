@@ -29,14 +29,14 @@ and Gemini receive the same project rules.
 
 ## Existing: Browser storage for local preferences and progress
 
-The Hindi app and portions of the Lisbon planner use `localStorage`. Preserve stored
-key compatibility unless a change includes an intentional migration.
+The Hindi app uses `localStorage`. Preserve stored key compatibility unless a change
+includes an intentional migration.
 
-## Existing: Firestore for Lisbon shared state
+## 2026-09-03: Remove the private Lisbon planner
 
-The Lisbon planner uses Firebase's browser SDK and Firestore. The Firebase client
-configuration is public by design. Authorization and privacy depend on Firestore
-rules and the application's data model, not on hiding client configuration.
+The Lisbon trip planner contained private family and booking details, so it is not
+part of the public Melo repository or deployment set. Personal itinerary tools must
+use a private repository and enforce access control before they are hosted.
 
 ## Existing: Web Speech API for audio
 

@@ -6,7 +6,6 @@ Melo is a monorepo of small, independently deployed static sites:
 | --- | --- | --- |
 | Home | `sites/home` | [melo.ink](https://melo.ink) |
 | Hindi Fun | `sites/hindi` | [hindi.melo.ink](https://hindi.melo.ink) |
-| Lisbon Trip | `sites/lisbon` | [lisbon.melo.ink](https://lisbon.melo.ink) |
 | Portugal for Kids | `sites/portugal-kids` | [portugal-kids.melo.ink](https://portugal-kids.melo.ink) |
 
 Each directory under `sites/` is a self-contained deployable unit with its own
