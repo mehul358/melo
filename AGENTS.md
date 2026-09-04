@@ -28,6 +28,25 @@ python3 -m http.server 8888 --directory sites/hindi
 Run `node scripts/validate-sites.mjs` before committing. Do not open the HTML
 files directly because the Hindi app fetches fragments and JSON over HTTP.
 
+## Adding a public microsite
+
+When a project from another task or repository should become part of Melo:
+
+1. Choose a stable lowercase slug and add a self-contained `sites/<slug>` web
+   root. If the user explicitly wants a separate source repository, keep it
+   separate and add only its launcher link and deployment documentation here.
+2. Add the site to `scripts/validate-sites.mjs`, the home launcher, and the
+   architecture documentation.
+3. Create a Git-linked Netlify project named `melo-<slug>` and configure its
+   publish directory or external repository.
+4. Assign `<slug>.melo.ink` to that Netlify project.
+5. Add the Namecheap CNAME record `<slug>` pointing to the project's
+   `*.netlify.app` hostname.
+6. Verify DNS, strict HTTPS, the site content, and the home-page link.
+
+Netlify and DNS need this setup only once per microsite. Subsequent pushes to
+the configured production branch deploy automatically.
+
 ## Engineering rules
 
 - Work on a focused branch rather than directly on `main`.
