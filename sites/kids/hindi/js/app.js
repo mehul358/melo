@@ -949,9 +949,13 @@ async function loadContentAndInitialize() {
     } catch (error) {
         console.error("Failed to load content:", error);
         const loadingSpinner = document.getElementById('loading-spinner');
+        const splashScreen = document.getElementById('splash-screen');
+        const main = document.querySelector('main');
         if (loadingSpinner) {
             loadingSpinner.innerHTML = `<p class="text-red-500 text-center">Failed to load content.<br>Please check the console and refresh.</p>`;
         }
+        if (splashScreen) splashScreen.style.display = 'none';
+        if (main) main.classList.remove('opacity-0');
     }
 }
 
@@ -995,34 +999,38 @@ function initializeApp() {
     const urlParams = new URLSearchParams(window.location.search);
     const splashDisabled = urlParams.get('splash') === 'false';
 
-    if (splashDisabled) {
-        splashScreen.style.display = 'none';
+    let splashHidden = false;
+    let splashFallbackTimer;
+
+    function hideSplashScreen() {
+        if (splashHidden || !splashScreen || !main) return;
+        splashHidden = true;
+        clearTimeout(splashFallbackTimer);
+
+        splashVideo?.pause();
+        splashScreen.classList.add('fade-out');
         main.classList.remove('opacity-0');
         document.getElementById('menu-btn').style.display = 'block';
+
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+        }, 500);
+    }
+
+    if (splashDisabled) {
+        hideSplashScreen();
     } else if (splashScreen && splashVideo && skipSplashBtn && playSplashBtn && main) {
-        let splashHidden = false;
-
-        function hideSplashScreen() {
-            if (splashHidden) return;
-            splashHidden = true;
-
-            splashVideo.pause();
-            splashScreen.classList.add('fade-out');
-            main.classList.remove('opacity-0');
-            document.getElementById('menu-btn').style.display = 'block';
-
-            setTimeout(() => {
-                splashScreen.style.display = 'none';
-            }, 500);
-        }
+        // The intro is decorative and must never prevent access to the app.
+        splashFallbackTimer = setTimeout(hideSplashScreen, 8000);
 
         splashVideo.addEventListener('ended', () => {
             setTimeout(hideSplashScreen, 1000); // 1-second delay
         });
+        splashVideo.addEventListener('error', hideSplashScreen);
 
         skipSplashBtn.addEventListener('click', hideSplashScreen);
 
-        // Attempt to play video with sound
+        // Muted inline video is allowed to autoplay on mobile and desktop.
         let playPromise = splashVideo.play();
 
         if (playPromise !== undefined) {

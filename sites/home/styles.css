@@ -206,8 +206,10 @@ h1 {
   font-weight: 700;
 }
 
-.hindi .card-icon { color: #9b3f00; background: #ffddb4; }
-.portugal .card-icon { color: #6530aa; background: #e7d8ff; }
+.kids .card-icon { color: #9b3f00; background: #ffddb4; }
+.travel .card-icon { color: #08766a; background: #c8eee6; }
+.dev .card-icon { color: #5030aa; background: #e7d8ff; font-size: 1.25rem; }
+.tools .card-icon { color: #065d72; background: #cdf1f5; }
 
 .card-copy {
   display: grid;

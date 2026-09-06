@@ -3,25 +3,25 @@
 
 [[redirects]]
   from = "/hindi/*"
-  to = "https://hindi.melo.ink/:splat"
+  to = "https://kids.melo.ink/hindi/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/hindi"
-  to = "https://hindi.melo.ink/"
+  to = "https://kids.melo.ink/hindi/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/portugal-kids/*"
-  to = "https://portugal-kids.melo.ink/:splat"
+  to = "https://kids.melo.ink/portugal/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/portugal-kids"
-  to = "https://portugal-kids.melo.ink/"
+  to = "https://kids.melo.ink/portugal/"
   status = 301
   force = true
 

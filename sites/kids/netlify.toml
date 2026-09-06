@@ -1,0 +1,22 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/hindi"
+  to = "/hindi/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/portugal"
+  to = "/portugal/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), geolocation=(), payment=()"

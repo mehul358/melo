@@ -1,4 +1,4 @@
-/hindi/*          https://hindi.melo.ink/:splat          301!
-/hindi            https://hindi.melo.ink/                301!
-/portugal-kids/*  https://portugal-kids.melo.ink/:splat  301!
-/portugal-kids    https://portugal-kids.melo.ink/        301!
+/hindi/*          https://kids.melo.ink/hindi/:splat    301!
+/hindi            https://kids.melo.ink/hindi/          301!
+/portugal-kids/*  https://kids.melo.ink/portugal/:splat  301!
+/portugal-kids    https://kids.melo.ink/portugal/        301!

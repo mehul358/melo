@@ -2,8 +2,9 @@
 
 ## Audience
 
-The site is a personal family hub. Its current experiences are designed primarily
-for children learning Hindi and learning about Portugal.
+The site is a public personal hub. Its current experiences are designed primarily
+for children learning Hindi and learning about Portugal, with durable areas ready
+for public travel, software, and utility projects.
 
 ## Product principles
 
@@ -25,6 +26,17 @@ English speech playback. Progress is local to the browser.
 
 A playful guide to places, language, food, animals, history, packing, songs, quizzes,
 and memory games, with weather and speech features.
+
+## Public categories
+
+- **Kids:** playful learning, games, and activities.
+- **Travel:** public guides, maps, and travel helpers without personal trip data.
+- **Dev:** hobby software, experiments, and public AI or agent prototypes.
+- **Tools:** assistants, task managers, automations, and lifestyle utilities.
+
+The categories are intentionally broad so most new projects become pages rather
+than new subdomains. Private family tools remain outside the public site until they
+have an appropriate authentication and data-protection design.
 
 ## Out of scope by default
 
