@@ -1,13 +1,13 @@
 # Hindi Fun!
 
-Standalone Hindi-learning microsite for `hindi.melo.ink`.
+Hindi-learning experience served at `kids.melo.ink/hindi/`.
 
 ## Local development
 
 Serve this directory over HTTP so the JSON and HTML component requests work:
 
 ```sh
-python3 -m http.server 8000 --directory sites/hindi
+python3 -m http.server 8000 --directory sites/kids
 ```
 
 Then open <http://localhost:8000/>. Add `?splash=false` to skip the intro video.
@@ -16,7 +16,8 @@ Then open <http://localhost:8000/>. Add `?splash=false` to skip the intro video.
 
 Connect this repository to a Netlify site with:
 
-- Base directory: `sites/hindi`
+- Category publish directory: `sites/kids`
+- Feature path: `/hindi/`
 - Build command: none
 - Publish directory: `.`
 

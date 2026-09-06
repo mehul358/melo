@@ -16,6 +16,20 @@ self-contained Netlify project. The apex hosts the launcher and microsites use
 subdomains instead of path proxies. This keeps deployments, storage, cookies,
 service workers, headers, and failures isolated.
 
+Superseded by the category deployment decision below.
+
+## 2026-09-06: Durable category deployments with path-based features
+
+The apex launcher points to four broad public categories: `kids`, `travel`, `dev`,
+and `tools`. Each category has one Netlify project and one subdomain. Individual
+experiences use paths within the category, so adding a normal feature does not
+require another Netlify project, DNS record, or TLS certificate.
+
+Category boundaries preserve useful isolation without creating infrastructure for
+every experiment. Create another category only when several likely experiences do
+not fit the existing taxonomy. Private family or account-connected tools are not
+published merely because a category exists; they require real access control.
+
 ## 2026-08-19: GitHub and Netlify define the deployment flow
 
 Branches and pull requests are the review boundary. Netlify Deploy Previews are the

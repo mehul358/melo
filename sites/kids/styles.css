@@ -1,0 +1,193 @@
+:root {
+  color-scheme: light;
+  --ink: #28223d;
+  --muted: #6d667d;
+  --paper: #fff8ee;
+  --accent: #f97351;
+  --accent-dark: #a93425;
+  --line: rgba(40, 34, 61, 0.11);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 88% 7%, rgba(255, 197, 66, 0.23), transparent 26rem),
+    radial-gradient(circle at 4% 48%, rgba(249, 115, 81, 0.13), transparent 24rem),
+    var(--paper);
+  font-family: "Nunito", system-ui, sans-serif;
+}
+
+a { color: inherit; }
+
+.site-header,
+main,
+footer {
+  width: min(1100px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.site-header {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.brand-mark {
+  width: 27px;
+  height: 33px;
+  border-radius: 70% 45% 65% 60%;
+  background: linear-gradient(145deg, #43e1df, #04aabe);
+  transform: rotate(8deg);
+  box-shadow: inset 5px 5px 9px rgba(255, 255, 255, 0.45);
+}
+
+.category-label {
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: var(--accent-dark);
+  background: rgba(249, 115, 81, 0.13);
+  font-weight: 800;
+}
+
+.hero { padding: 112px 0 96px; }
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+strong { font-family: "Fredoka", sans-serif; }
+
+h1 {
+  max-width: 930px;
+  margin: 0;
+  font-size: clamp(3.4rem, 8.5vw, 7.3rem);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.hero > p:last-child {
+  max-width: 670px;
+  margin: 30px 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.collection {
+  padding: 86px 0 112px;
+  border-top: 1px solid var(--line);
+}
+
+.section-heading h2 {
+  max-width: 720px;
+  margin: 0 0 40px;
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  line-height: 1.05;
+}
+
+.site-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.site-card {
+  min-height: 310px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 14px 44px rgba(40, 34, 61, 0.07);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.site-card:hover,
+.site-card:focus-visible {
+  transform: translateY(-6px) rotate(-0.3deg);
+  box-shadow: 0 24px 58px rgba(40, 34, 61, 0.14);
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.hindi .card-icon { color: #9b3f00; background: #ffddb4; }
+.portugal .card-icon { color: #6530aa; background: #e7d8ff; }
+
+.card-copy { display: grid; gap: 12px; }
+.card-copy strong { font-size: 1.7rem; }
+.card-copy span { color: var(--muted); line-height: 1.55; }
+
+.card-arrow {
+  position: absolute;
+  right: 28px;
+  top: 28px;
+  font-size: 1.5rem;
+}
+
+footer {
+  min-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+footer a { color: var(--accent-dark); }
+
+@media (max-width: 760px) {
+  .hero { padding: 76px 0 72px; }
+  .site-grid { grid-template-columns: 1fr; }
+  .site-card { min-height: 240px; }
+}
+
+@media (max-width: 520px) {
+  .site-header,
+  main,
+  footer { width: min(100% - 28px, 1100px); }
+  h1 { font-size: clamp(3.15rem, 17vw, 5rem); }
+  footer { align-items: flex-start; flex-direction: column; justify-content: center; gap: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; }
+}
